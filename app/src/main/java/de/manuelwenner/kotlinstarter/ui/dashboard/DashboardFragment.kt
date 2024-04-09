@@ -4,18 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavOptions
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import de.manuelwenner.kotlinstarter.R
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import de.manuelwenner.kotlinstarter.SuperheroAdapter
+import de.manuelwenner.kotlinstarter.data.Hero
 import de.manuelwenner.kotlinstarter.databinding.FragmentDashboardBinding
 
 
 class DashboardFragment : Fragment() {
 
+    private lateinit var adapter: SuperheroAdapter
+    private lateinit var recyclerView: RecyclerView
     private var _binding: FragmentDashboardBinding? = null
 
     // This property is only valid between onCreateView and
@@ -33,21 +34,22 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        binding.btnSubmit.setOnClickListener {
-            val navController = findNavController()
-            navController.popBackStack(R.id.navigation_dashboard, true)
-            navController.navigate(R.id.navigation_notifications)
-        }
+        val items = listOf(
+            Hero(1, "Hulk", "Marvel"),
+            Hero(2, "Batman", "DC"),
+            Hero(3, "Captain America", "Marvel"),
+        )
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        recyclerView = binding.rvSuperheros
+        adapter = SuperheroAdapter(items)
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+//        val textView: TextView = binding.textDashboard
+//        dashboardViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        }
         return root
-    }
-
-    override fun onResume() {
-        super.onResume()
     }
 
     override fun onDestroyView() {
