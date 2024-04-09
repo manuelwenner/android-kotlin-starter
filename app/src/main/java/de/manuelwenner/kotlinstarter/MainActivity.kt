@@ -1,14 +1,25 @@
 package de.manuelwenner.kotlinstarter
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val myButton = findViewById<Button>(R.id.btnRandomText);
+
+        myButton.setOnClickListener{
+            findViewById<TextView>(R.id.tvContent).text = "I'm Batman"
+            findViewById<ImageView>(R.id.ivBatman).animate().scaleX(1.0f).setDuration(2000)
+
+            val explicitIntent = Intent(this, ListActivity::class.java)
+            startActivity(explicitIntent)
+        }
     }
 }
