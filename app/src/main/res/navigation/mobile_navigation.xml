@@ -15,7 +15,11 @@
         android:id="@+id/navigation_dashboard"
         android:name="de.manuelwenner.kotlinstarter.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_navigation_dashboard_to_dashboardDetailFragment"
+            app:destination="@id/dashboardDetailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
@@ -23,5 +27,11 @@
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications">
 
+    </fragment>
+    <fragment
+        android:id="@+id/dashboardDetailFragment"
+        android:name="de.manuelwenner.kotlinstarter.DashboardDetailFragment"
+        android:label="fragment_dashboard_detail"
+        tools:layout="@layout/fragment_dashboard_detail" >
     </fragment>
 </navigation>
