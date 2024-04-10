@@ -1,10 +1,10 @@
 package de.manuelwenner.kotlinstarter
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import de.manuelwenner.kotlinstarter.databinding.FragmentDashboardDetailBinding
 
 /**
@@ -19,8 +19,8 @@ class DashboardDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentDashboardDetailBinding.inflate(inflater, container, false)
-        val hero = arguments?.getString("hero")
-        binding.tvWelcomeMessage.text = "Welcome ${hero}"
+        val args = DashboardDetailFragmentArgs.fromBundle(requireArguments())
+        binding.tvWelcomeMessage.text = "Welcome ${args.hero}"
         // Inflate the layout for this fragment
         return binding.root
     }

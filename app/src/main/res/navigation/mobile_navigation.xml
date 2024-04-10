@@ -33,5 +33,8 @@
         android:name="de.manuelwenner.kotlinstarter.DashboardDetailFragment"
         android:label="fragment_dashboard_detail"
         tools:layout="@layout/fragment_dashboard_detail" >
+        <argument
+            android:name="hero"
+            app:argType="string" />
     </fragment>
 </navigation>

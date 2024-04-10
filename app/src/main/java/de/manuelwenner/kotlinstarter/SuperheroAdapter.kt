@@ -1,12 +1,11 @@
 package de.manuelwenner.kotlinstarter
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import de.manuelwenner.kotlinstarter.data.Hero
-
+import de.manuelwenner.kotlinstarter.ui.dashboard.DashboardFragmentDirections
 
 class SuperheroAdapter(private val items: List<Hero>) :
     RecyclerView.Adapter<SuperheroViewHolder>() {
@@ -24,12 +23,13 @@ class SuperheroAdapter(private val items: List<Hero>) :
 
         holder.itemView.setOnClickListener {
 
-            val bundle = Bundle()
-            bundle.putString("hero", item.name)
-            it.findNavController().navigate(R.id.action_navigation_dashboard_to_dashboardDetailFragment, bundle)
+//            val bundle = Bundle()
+//            bundle.putString("hero", item.name)
+//            it.findNavController()
+//                .navigate(R.id.action_navigation_dashboard_to_dashboardDetailFragment, bundle)
 
-//            val action = DashboardFragmentDirections.actionNavigationDashboardToDashboardDetailFragment(item)
-//            it.findNavController().navigate(action)
+            val action = DashboardFragmentDirections.actionNavigationDashboardToDashboardDetailFragment(item.name)
+            it.findNavController().navigate(action)
         }
     }
 
