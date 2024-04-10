@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/dashboardDetailFragment"
-        android:name="de.manuelwenner.kotlinstarter.DashboardDetailFragment"
+        android:name="de.manuelwenner.kotlinstarter.ui.dashboard.DashboardDetailFragment"
         android:label="fragment_dashboard_detail"
         tools:layout="@layout/fragment_dashboard_detail" >
         <argument

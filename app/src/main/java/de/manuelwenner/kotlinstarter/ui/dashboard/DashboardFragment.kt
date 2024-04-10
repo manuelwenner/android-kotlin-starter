@@ -45,10 +45,6 @@ class DashboardFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        Thread {
-            // Do background work
-            println("Thread Running")
-        }.start()
 
 
 //        val textView: TextView = binding.textDashboard
