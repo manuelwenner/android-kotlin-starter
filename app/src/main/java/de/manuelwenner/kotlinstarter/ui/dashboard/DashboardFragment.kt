@@ -8,9 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
 import de.manuelwenner.kotlinstarter.SuperheroAdapter
 import de.manuelwenner.kotlinstarter.data.Hero
 import de.manuelwenner.kotlinstarter.databinding.FragmentDashboardBinding
+import de.manuelwenner.kotlinstarter.db.AppDatabase
+import de.manuelwenner.kotlinstarter.entity.MovieEntity
 
 
 class DashboardFragment : Fragment() {
@@ -33,6 +36,21 @@ class DashboardFragment : Fragment() {
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        Thread {
+            val db = Room.databaseBuilder(
+                requireContext(),
+                AppDatabase::class.java, "movie-rater"
+            ).build()
+
+            val allMovies = db.movieDao().getAllMovies()
+            if(allMovies.isEmpty()) {
+                val movie = MovieEntity("Hulk", "Movie about Hulk")
+                db.movieDao().insertMovie( movie )
+            }
+            println(allMovies)
+        }.start()
+
 
         val items = listOf(
             Hero(1, "Hulk", "Marvel"),
