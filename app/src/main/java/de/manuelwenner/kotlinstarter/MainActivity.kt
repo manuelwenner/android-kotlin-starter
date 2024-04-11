@@ -2,11 +2,9 @@ package de.manuelwenner.kotlinstarter
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,6 +13,7 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.btnSubmit).setOnClickListener{
             findViewById<TextView>(R.id.tvContent).text = "Yaaay it worked"
+            findViewById<ImageView>(R.id.ivBatman).animate().scaleX(1.0F).duration = 2000
         }
     }
 }
