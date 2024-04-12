@@ -3,21 +3,21 @@ package de.manuelwenner.kotlinstarter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import de.manuelwenner.kotlinstarter.data.Hero
+import de.manuelwenner.kotlinstarter.data.Movie
 
-class SuperheroAdapter(private val items: List<Hero>) :
-    RecyclerView.Adapter<SuperheroViewHolder>() {
+class MovieAdapter(private val items: List<Movie>) :
+    RecyclerView.Adapter<MovieViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuperheroViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.superhero_item_layout, parent, false)
-        return SuperheroViewHolder(view)
+        return MovieViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: SuperheroViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val item = items[position]
         holder.itemNameTextView.text = item.name
-        holder.itemTeam.text = item.team
+        holder.itemTeam.text = item.overview
     }
 
     override fun getItemCount(): Int {
